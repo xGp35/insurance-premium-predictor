@@ -6,13 +6,13 @@ from config.city_tier import tier_1_cities, tier_2_cities
 
 # pydantic model to calidate incoming data
 class UserInput(BaseModel):
-    age: Annotated[int, Field(..., gt=0, lt=120, description='Age of the user')]
-    weight: Annotated[float, Field(..., gt=0, description='Weight of the user')]
-    height: Annotated[float, Field(..., gt=0, lt=2.5, description='Height of the user')]
-    income_lpa: Annotated[float, Field(..., gt=0, description='Annual Salary of the user in LPA')]
-    smoker: Annotated[bool, Field(..., description='Is User a smoker')]
-    city: Annotated[str, Field(..., description='The city that the user belongs to')]
-    occupation: Annotated[Literal['retired', 'freelancer', 'student', 'government_job', 'business_owner', 'unemployed', 'private_job'], Field(..., description='Occupation of the user')]
+    age: Annotated[int, Field(..., gt=0, lt=120, description='Age of the user')] = 31
+    weight: Annotated[float, Field(..., gt=0, description='Weight of the user')] = 91
+    height: Annotated[float, Field(..., gt=0, lt=2.5, description='Height of the user')] = 1.72
+    income_lpa: Annotated[float, Field(..., gt=0, description='Annual Salary of the user in LPA')] = 10
+    smoker: Annotated[bool, Field(..., description='Is User a smoker')] = True
+    city: Annotated[str, Field(..., description='The city that the user belongs to')] = 'mumbai'
+    occupation: Annotated[Literal['retired', 'freelancer', 'student', 'government_job', 'business_owner', 'unemployed', 'private_job'], Field(..., description='Occupation of the user')] = 'retired'
 
     @field_validator('city')
     @classmethod
